@@ -48,15 +48,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [X] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [X] Commit: `Create Subscriber model struct.`
+    -   [X] Commit: `Create Notification model struct.`
+    -   [X] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [X] Commit: `Implement add function in Subscriber repository.`
+    -   [X] Commit: `Implement list_all function in Subscriber repository.`
+    -   [X] Commit: `Implement delete function in Subscriber repository.`
+    -   [X] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Menurut saya, dalam kasus ini sudah cukup menggunakan satu Model struct saja, yaitu `Subscriber`, tanpa perlu menggunakan interface/trait. Hal ini dikarenakan hanya ada satu observer. Penggunaan interface akan lebih berguna ketika kita memiliki banyak observer dengan tipe yang berbeda.
+
+2. Penggunaan `DashMap` saat ini sudah tepat, dibandingkan menggunakan `Vec`. Hal ini karena `DashMap` menjamin keunikan `id` dalam `Product` dan `url` dalam `Subscriber` secara otomatis, memungkinkan pencarian cepat dengan kompleksitas O(1) dibandingkan O(n) pada `Vec`, serta memudahkan penghapusan tanpa perlu _reallocation_. Selain itu, `DashMap` mendukung akses _concurrent_, sehingga lebih aman digunakan jika aplikasi tersebut digunakan dalam lingkungan _multi-thread_.
+
+3. Karena BambangShop berjalan secara _multi-threading_, maka penggunaan `DashMap` akan lebih tepat daripada menggunakan Singleton pattern. `DashMap` menyediakan _thread-safe_ bawaan dengan mekanisme _locking_ yang lebih efisien. Hal ini memungkinkan data `SUBSCRIBERS` diakses secara bersamaan tanpa masalah. Jika kita menggunakan pendekatan Singleton pattern, objek hanya memiliki satu instance selama program dijalankan dan tidak menawarkan efisiensi dalam akses data yang bersamaan.
 
 #### Reflection Publisher-2
 
