@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [X] Commit: `Implement delete function in Subscriber repository.`
     -   [X] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [X] Commit: `Create Notification service struct skeleton.`
+    -   [X] Commit: `Implement subscribe function in Notification service.`
+    -   [X] Commit: `Implement subscribe function in Notification controller.`
+    -   [X] Commit: `Implement unsubscribe function in Notification service.`
+    -   [X] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [X] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -84,5 +84,10 @@ This is the place for you to write reflections:
 3. Karena BambangShop berjalan secara _multi-threading_, maka penggunaan `DashMap` akan lebih tepat daripada menggunakan Singleton pattern. `DashMap` menyediakan _thread-safe_ bawaan dengan mekanisme _locking_ yang lebih efisien. Hal ini memungkinkan data `SUBSCRIBERS` diakses secara bersamaan tanpa masalah. Jika kita menggunakan pendekatan Singleton pattern, objek hanya memiliki satu instance selama program dijalankan dan tidak menawarkan efisiensi dalam akses data yang bersamaan.
 
 #### Reflection Publisher-2
+1. Memisahkan Service dan Repository dari Model dalam arsitektur perangkat lunak memberikan berbagai manfaat berdasarkan prinsip desain seperti Single Responsibility Principle (SRP). Meskipun Model dalam MVC mencakup logika bisnis dan penyimpanan data, mencampurnya dalam satu tempat dapat menyulitkan dalam _maintainability_ seiring pertumbuhan aplikasi. Repository berfungsi sebagai lapisan yang menangani interaksi langsung dengan sumber data seperti database, cache, atau API eksternal, memungkinkan perubahan pada penyimpanan data tanpa memengaruhi logika bisnis. Sementara itu, Service bertugas mengelola aturan bisnis dan koordinasi antar model atau repositori, menjadikan kode lebih modular dan mudah diuji. Pemisahan ini menghasilkan kode yang lebih bersih, fleksibel, serta lebih mudah dikembangkan seiring meningkatnya kompleksitas sistem.
+
+2. Jika hanya menggunakan Model tanpa memisahkan Service dan Repository, kompleksitas kode akan meningkat secara signifikan karena Model harus menangani berbagai tanggung jawab sekaligus, yaitu menangani struktur data, logika bisnis, dan juga interaksi dengan penyimpanan data. Selain itu, _coupling_ antar class juga menjadi lebih tinggi, yang artinya jika terjadi perubahan pada suatu bagian dapat menyebabkan banyak perubahan lain.
+
+3. Postman sangat membantu dalam _testing_ API yang saya kembangkan. Postman memungkinkan saya untuk mengirim request HTTP, seperti `GET`, `POST`, `PUT`, dan `DELETE` dengan mudah, melihat respons dari server, serta menangani autentikasi dan _header request_ tanpa harus menulis kode tambahan. Selain itu, terdapat fitur Collection & Environment yang memungkinkan saya menyimpan dan mengelola berbagai _request_ API untuk proyek yang dikerjakan.
 
 #### Reflection Publisher-3
